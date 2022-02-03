@@ -16,6 +16,8 @@ import java.util.*
 
 
 // CONSTANTS
+const val FORMAT_PADDING = "\n\n"
+const val NAME_PADDING = 20
 const val ITEM_NAME_PROMPT = "Item Name: "
 const val ITEM_AMOUNT_PROMPT = "Item Amount: "
 
@@ -47,14 +49,28 @@ class Item(name : String, initAmount : Int){
 
     fun getAttr() {
         // Prints out the attributes of this object
-        println("$itemName     $itemAmount")
+
+        // For formatting, there needs to be spacing after the name.
+        // Print the name with the padding
+        print(itemName.padEnd(NAME_PADDING))
+
+        // Print the item's current amount
+        print("$itemAmount\n")
     }
 }
 
 fun showDict() {
+    // This shows a table of the current inventory
+    // First show the headers
+    print(FORMAT_PADDING)
+    print("ITEM NAME".padEnd(NAME_PADDING))
+    print("AMOUNT\n")
+
+    // Call the objects print method
     for (item in currentItems) {
         item.getAttr()
     }
+    print(FORMAT_PADDING)
 }
 
 fun addItem() {
@@ -119,7 +135,7 @@ fun main() {
     // While loop controls when the program ends
     while(activeProgram) {
         // Start with the menu and prompt the user for their selection
-        println("Welcome. This is an item list program. Please select one of the following")
+        println("Welcome. This is an item list program. Please select one of the following:")
         println("1) View List  2) Add Item  3) Edit Item  4) Help")
         print("Your Selection (x to Exit): ")
         var selection = readLine()!!.lowercase()
