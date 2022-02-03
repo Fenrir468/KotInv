@@ -103,7 +103,6 @@ fun addItem() {
             contAdd = false
         }
     }
-
 }
 
 fun editItem() {
