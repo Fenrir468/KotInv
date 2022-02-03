@@ -138,9 +138,20 @@ fun editItem() {
     }
 }
 
+fun showHelp() {
+    // This function displays a help text
+    println("This is a simple inventory tool built in Kotlin.")
+    println("At the main menu you can type in either 1, 2, 3, or 4.")
+    println("1) Displays the current inventory list.")
+    println("2) You can add an item by typing in the item name and the amount in inventory.")
+    println("3) You can edit an existing item by either adding or subtracting to it's amount.")
+    println("4) This help screen.")
+    println("To exit the program, just type 'x' at the main menu.")
+}
+
 fun main() {
     // Main function that controls the program
-    // While loop controls when the program ends
+    // While loop controls when the program ends. User must type x at the menu.
     while(activeProgram) {
         // Start with the menu and prompt the user for their selection
         print(FORMAT_PADDING)
@@ -148,12 +159,12 @@ fun main() {
         println("1) View List  2) Add Item  3) Edit Item  4) Help")
         print("Your Selection (x to Exit): ")
 
-        // Based on their selection, perform the following functions
+        // Based on their selection, match the selection to the following functions
         when (readLine()!!.lowercase()) {
             "1" -> showDict()               // Displays the current list if it exists
             "2" -> addItem()                // Allows the user to add Items
             "3" -> editItem()               // Allows the user to edit Items
-            "4" -> println("4")             // Displays a help text
+            "4" -> showHelp()               // Displays a help text
             "x" -> activeProgram = false    // Exits the program
             else -> {
                 // If the Selection doesn't match, this is printed
